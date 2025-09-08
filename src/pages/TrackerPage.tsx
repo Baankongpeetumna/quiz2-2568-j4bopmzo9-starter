@@ -31,7 +31,7 @@ export default function FoodTracker() {
       <Title order={2} mb="md">
         Food Tracker
       </Title>
-      <Button onClick={() => setOpened(true)}>AAdd an item</Button>
+      <Button onClick={() => setOpened(true)}>Add an item</Button>
       {/* Type additional AddFoodModal here. */}
       <Modal
           opened={opened}

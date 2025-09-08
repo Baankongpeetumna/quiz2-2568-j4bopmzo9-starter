@@ -6,7 +6,7 @@ import {
   Select,
   Button,
   Stack,
-  Input
+  Input,NativeSelect 
 } from "@mantine/core";
 
 
@@ -35,11 +35,12 @@ export default function AddModalProps({
   const [category, setCategory] = useState<string | null>(null);
 
   const handleSubmit = () => {
-    if (!name.trim() || !quantity || !price) return;
-    onAdd(name, quantity, price);
+    if (!name.trim() || !quantity || !price || !category) return;
+    onAdd(name, quantity, price,category);
     setName("");
-    setPrice(null);
-    setQuantity(null);
+    setPrice(0);
+    setQuantity(0);
+    setCategory(null);
     onClose();
   };
 
@@ -63,18 +64,28 @@ export default function AddModalProps({
       onChange={(e)=>setName(e.currentTarget.value)}
     />
     <NumberInput
+      value={price}
       label="Price per dish"
       description="Price per dish"
-      placeholder="Input placeholder"
+      placeholder="0"
+      min={0}
+      max={100}
+      error={!price && "Price per dish is required" }
+      
     />
     <NumberInput
+      
       label="Quantity"
       description="Quantity"
-      placeholder="Input placeholder"
+      placeholder="0"
+      min={0}
+      max={100}
+      error={"Quantity is required" }
     />
+    <NativeSelect label="Category" description="Category" error={!category?.trim() && "Category is required" } data={['MainCourse', 'Drink', 'Dessert']} />
 
 
-        <Button onClick={handleSubmit}>Save</Button>
+        <Button onClick={handleSubmit}>Submit</Button>
       </Stack>
     </Modal>
 
