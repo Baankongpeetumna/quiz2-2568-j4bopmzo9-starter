@@ -79,9 +79,9 @@ export default function AddModalProps({
         />
         <NativeSelect
           label="Category"
-          onChange ={setCategory}
+          onChange = {setCategory}
           description="Category"
-          error={!category?.trim() && "Category is required"}
+          error={!category && "Category is required"}
           data={["MainCourse", "Drink", "Dessert"]}
         />
 
