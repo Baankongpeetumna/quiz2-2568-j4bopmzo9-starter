@@ -1,5 +1,5 @@
-import { Card, Group, Badge, ActionIcon, Text } from "@mantine/core";
-import { IconTrash } from "@tabler/icons-react";
+
+
 
 type FoodProps = {
   name: string;
