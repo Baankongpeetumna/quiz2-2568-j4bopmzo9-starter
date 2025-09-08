@@ -40,6 +40,7 @@ export default function FoodTracker() {
         />
 
       <Divider my="md" />
+
       {/* Type additional total cost here. */}
       <Title order={4}>Total cost: {} Baht</Title>
       <Stack my="sm">{/* Type additional text here. */}</Stack>
