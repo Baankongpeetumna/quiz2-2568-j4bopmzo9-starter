@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Button, Stack, Title, Divider, Container } from "@mantine/core";
 import { v4 as uuidv4 } from "uuid";
+import Modal from "../components/Modal";
 
 type FoodItem = {
   id: string;
@@ -9,6 +10,16 @@ type FoodItem = {
   quantity: number | string;
   category: string;
 };
+
+const addItems = (
+    items: string,
+  ) => {
+    const newTask: Items = {
+      id: uuidv4(),
+      items,
+    };
+    setItems((prev) => [...prev, newTask]);
+  };
 
 export default function FoodTracker() {
   const [opened, setOpened] = useState(false);
@@ -20,8 +31,13 @@ export default function FoodTracker() {
       <Title order={2} mb="md">
         Food Tracker
       </Title>
-      <Button>Add Food Item</Button>
+      <Button onClick={() => setOpened(true)}>AAdd an item</Button>
       {/* Type additional AddFoodModal here. */}
+      <Modal
+          opened={opened}
+          onClose={() => setOpened(false)}
+          onAdd={addItems}
+        />
 
       <Divider my="md" />
       {/* Type additional total cost here. */}
